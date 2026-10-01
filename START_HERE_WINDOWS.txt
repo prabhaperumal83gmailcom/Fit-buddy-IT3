@@ -1,0 +1,19 @@
+FITBUDDY CLEAN START
+
+1. Open PowerShell in this folder.
+2. py -3 -m venv .venv
+3. .\.venv\Scripts\Activate.ps1
+4. python -m pip install --upgrade pip
+5. python -m pip install -r requirements.txt
+6. Copy-Item .env.example .env
+7. notepad .env
+8. Put your NEW Gemini API key in GEMINI_API_KEY. Do not paste it into ChatGPT.
+9. Save .env.
+10. python -m uvicorn app.main:app --reload
+11. Open http://127.0.0.1:8000/
+
+If activation is blocked:
+Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass
+.\.venv\Scripts\Activate.ps1
+
+The app retries transient Gemini errors and falls back to configured models. If Gemini is unavailable, it uses a local deterministic plan so the app remains usable.
